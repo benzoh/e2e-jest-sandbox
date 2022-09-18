@@ -1,4 +1,4 @@
-const chalk = require( 'chalk' );
+const chalk = require("chalk");
 
 let credentials = require("../utils/credentials");
 let createAccount = require("../actions/createAccount.js");
@@ -32,10 +32,10 @@ describe("Basic authentication e2e tests", () => {
     });
 
     it("ログインが可能", async () => {
-        const hoge = await login.do();
+        const username = await login.do();
 
         page.waitForTimeout(3000);
-        console.log(chalk.white({hoge}));
-        expect("hoge").toContain(hoge);
+        console.log(chalk.white({ username }));
+        expect(process.env.LOGIN_USERNAME).toContain(username);
     });
 });
