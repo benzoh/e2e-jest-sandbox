@@ -2,15 +2,14 @@ const chalk = require("chalk");
 
 class createAccount {
     constructor(page) {
-        this.url = "http://127.0.0.1:8080/";
+        this.url = "https://bookmarks.hippohack.me/";
         this.page = page;
-        this.signupBtn = "#signup";
-        this.signupBody = "#signupBody";
-        this.fullnameField = "#fullname";
-        this.usernameField = "#username";
-        this.passwordField = "#password";
-        this.loginPageBtn = "#loginBtn";
-        this.signupPageBtn = "#signupBtn";
+        this.signupBtn = "body > div.eyecatch > div:nth-child(3) > div > div.d-flex > a:nth-child(2)";
+        this.signupBody = "#new_account";
+        this.emailField = "#account_email";
+        this.passwordField = "#account_password";
+        this.passwordConfirmationField = "#account_password_confirmation";
+        this.signupBtn = "#new_account > div.actions > input";
     }
 
     async signup(fullname, username, password) {
@@ -18,13 +17,12 @@ class createAccount {
             await this.page.goto(this.url);
             await this.page.waitFor(this.signupBtn);
             await this.page.click(this.signupBtn);
+            
             // Wait for the signupBody on the signup page to load
             await this.page.waitFor(this.signupBody);
 
             // Type the login credentials into the input fields
-            await this.page.type(this.fullnameField, fullname);
-            await this.page.waitFor(1000);
-            await this.page.type(this.usernameField, username);
+            await this.page.type(this.emailField, username);
             await this.page.waitFor(1000);
             await this.page.type(this.passwordField, password);
             await this.page.waitFor(1000);

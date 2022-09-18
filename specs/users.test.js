@@ -24,7 +24,7 @@ describe("Basic authentication e2e tests", () => {
             credential.username,
             credential.password
         );
-        page.waitFor(1000);
+        page.waitForTimeout(1000);
         expect(credential.fullname).toContain(firstname);
     });
 });
