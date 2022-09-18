@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+const chalk = require( 'chalk' );
 
 class login {
     constructor(page) {
@@ -29,4 +29,4 @@ class login {
     }
 }
 
-module.exports = (page) => new login(page);
+module.exports = ( page ) => new login( page );

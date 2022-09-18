@@ -1,13 +1,11 @@
 module.exports = (user) => {
-    let username = `${user}-${Math.random()}`;
+    let email = `${user}-${Math.random()}@benzoh.dev`;
     let password = `${Math.random()}`;
     
-    // Make sure both usernames and passwords are strings
-    username = String(username);
+    email = String(email);
     password = String(password);
-    const fullname = "John Doe";
     
-    let credential = { fullname, username, password };
+    let credential = { email, password };
     
     return credential;
 };
