@@ -1,11 +1,12 @@
-const chalk = require( 'chalk' );
+const chalk = require("chalk");
 
 class createAccount {
     constructor(page) {
         this.url = "https://bookmarks.hippohack.me/";
         this.page = page;
-        this.signupPageBtn = "body > div.eyecatch > div:nth-child(3) > div > div.d-flex > a:nth-child(2)";
-        
+        this.signupPageBtn =
+            "body > div.eyecatch > div:nth-child(3) > div > div.d-flex > a:nth-child(2)";
+
         this.signupBody = "#new_account";
         this.emailField = "#account_email";
         this.passwordField = "#account_password";
@@ -20,7 +21,7 @@ class createAccount {
             await this.page.goto(this.url);
             await this.page.waitForSelector(this.signupPageBtn);
             await this.page.click(this.signupPageBtn);
-            
+
             // Wait for the signupBody on the signup page to load
             await this.page.waitForSelector(this.signupBody);
 
@@ -34,14 +35,15 @@ class createAccount {
             await this.page.click(this.signupBtn);
 
             // Wait for headingTitle to load
-            await this.page.waitForSelector("body > div.row.justify-content-center > div > h2");
+            await this.page.waitForSelector(
+                "body > div.row.justify-content-center > div > h2"
+            );
             await this.page.waitForTimeout(1000);
 
             const headingTitle = await this.page.$eval(
                 "body > div.row.justify-content-center > div > h2",
                 (el) => el.textContent
             );
-            console.log(chalk.blue({headingTitle}));
 
             return headingTitle;
         } catch (err) {
@@ -50,4 +52,4 @@ class createAccount {
     }
 }
 
-module.exports = ( page ) => new createAccount( page );
+module.exports = (page) => new createAccount(page);
